@@ -1,9 +1,9 @@
 import { CREDENTIALS } from '../data/Constants'
 import LoginPage from '../pages/LoginPage'
 import ProductsPage from '../pages/ProductsPage'
-import ShoppingCartPage from '../pages/ShoppingCartPage'
 import CheckoutPage from '../pages/CheckoutPage'
 import OverviewPage from '../pages/OverviewPage'
+import ConfirmationPage from '../pages/ConfirmationPage'
 
 fixture('Checkout page tests')
     .page `https://www.saucedemo.com/`
@@ -35,4 +35,14 @@ test("Final order items", async t => {
         .nth(0)
         .textContent
     ).eql("Sauce Labs Backpack")
+})
+
+test("Complete a purchase", async t => {
+    await LoginPage.submitLoginForm(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
+    await OverviewPage.addItemToCart()
+    await OverviewPage.fillUserInformation()
+    await t.click(CheckoutPage.continueButton)
+        .click(OverviewPage.finishButton)
+
+    await t.expect(ConfirmationPage.checkoutCompleteContainer.exists).ok()
 })
