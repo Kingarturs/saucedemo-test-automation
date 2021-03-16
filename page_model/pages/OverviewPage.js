@@ -7,6 +7,7 @@ import CheckoutPage from '../pages/CheckoutPage'
 class OverviewPage {
     constructor() {
         this.checkoutSummaryContainer = Selector('#checkout_summary_container')
+        this.finishButton = Selector('.btn_action.cart_button')
     }
 
     async addItemToCart() {
