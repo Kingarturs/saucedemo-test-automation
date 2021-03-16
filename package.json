@@ -4,7 +4,7 @@
   "description": "Automation testing homework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-all-chrome": "testcafe chrome page_model/tests"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,5 @@
 import {Selector, t} from 'testcafe'
+import { CREDENTIALS } from '../data/Constants'
 import ProductsPage from '../pages/ProductsPage'
 import ShoppingCartPage from '../pages/ShoppingCartPage'
 import CheckoutPage from '../pages/CheckoutPage'
@@ -15,9 +16,9 @@ class OverviewPage {
     }
 
     async fillUserInformation() {
-        await t.typeText(CheckoutPage.firstNameField, "First Name")
-            .typeText(CheckoutPage.lastNameField, "Last Name")
-            .typeText(CheckoutPage.postalCodeField, "123456")
+        await t.typeText(CheckoutPage.firstNameField, CREDENTIALS.FIRST_NAME)
+            .typeText(CheckoutPage.lastNameField, CREDENTIALS.LAST_NAME)
+            .typeText(CheckoutPage.postalCodeField, CREDENTIALS.ZIP_CODE)
     }
 }
 
